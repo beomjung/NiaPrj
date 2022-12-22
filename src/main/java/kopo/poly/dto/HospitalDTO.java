@@ -1,22 +1,22 @@
 package kopo.poly.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class HospitalDTO {
 
     /* 요청 파라미터 */
     private String stage1;
     private String stage2;
-
 
     /* 결과 파라미터 */
     private String resultCode; // 결과 코드
@@ -50,6 +50,8 @@ public class HospitalDTO {
     private String hpnicuyn; // 신생아 중환자실
     private String hpopyn; // 수술실
     private String hvccc; // 흉부 중환자
+    private String hvcc;
+
     private String hvec; // 응급실
     private String hvgc; // 입원실
     private String hvncc; // 신생중환자
@@ -70,6 +72,11 @@ public class HospitalDTO {
     private String postCdn2;
     private String wgs84Lat; // 병원 위도
     private String wgs84Lon; // 병원 경도
+
+    private String hvicc;
+    private String dutyInf;
+    private String hpccuyn;
+    private String hpcuyn;
 
     /* JSON 데이터 바로 DTO에 담기*/
     private String numOfRows;
