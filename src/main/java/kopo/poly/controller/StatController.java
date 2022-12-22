@@ -9,10 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -23,19 +19,29 @@ public class StatController {
     private final IStatService statService;
 
     @GetMapping("diseases")
-    @ResponseBody
-    public String diseases(Model model)throws Exception {
+    public String diseases(Model model, StatOneDTO statOneDTO) throws Exception {
         log.info(this.getClass().getName() + "국내 감염병 현황 조회 시작!");
 
-        List<StatOneDTO> statOneDTOList = statService.getStatOne();
-        List<StatFourDTO> statFourDTOList = statService.getStatFour();
+        StatOneDTO statOne = statService.getStatOne(statOneDTO);
+        StatFourDTO statFour = statService.getStatFour(statOneDTO);
 
-        log.info("1군 감염병 조회 결과 : " + statOneDTOList.size());
-        log.info("4군 감염병 조회 결과 : " + statFourDTOList.size());
 
-        model.addAttribute("oneList", statOneDTOList);
-        model.addAttribute("fourList", statFourDTOList);
+        model.addAttribute("statOne", statOne);
+        model.addAttribute("statFour", statFour);
 
-        return "test";
+        return "stat/diseases";
+    }
+
+    @GetMapping("Qna")
+    public String qna() {
+        log.info(this.getClass().getName() + "Qna 시작!");
+        return "stat/qna";
+    }
+
+    @GetMapping("action")
+    public String action() {
+        log.info(this.getClass().getName() + "행동요령");
+
+        return "stat/action";
     }
 }
