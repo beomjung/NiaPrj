@@ -1,9 +1,7 @@
 package kopo.poly.dto;
 
-import kopo.poly.controller.CovidController;
 import lombok.*;
 
-import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -51,5 +49,5 @@ public class CovidKoreaDTO {
 
     /* API 파싱 */
     Map<String, Object> response;
-    List<CovidKoreaDTO> result;
+    Map<String, Object> result;
 }

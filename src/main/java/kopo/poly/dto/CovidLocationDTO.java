@@ -2,6 +2,8 @@ package kopo.poly.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -30,5 +32,9 @@ public class CovidLocationDTO {
     private String overFlowCnt; // 해외유입 수
     private String qurRate; // 만명당 발생율
     private String stdDay; // 기준일자
+
+
+    /* API 파싱 */
+    List<CovidLocationDTO> items;
 
 }

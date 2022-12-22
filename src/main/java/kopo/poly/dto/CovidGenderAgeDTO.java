@@ -3,7 +3,6 @@ package kopo.poly.dto;
 import lombok.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @Setter
